@@ -1,0 +1,768 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Streetscape</title><meta name="data-notion-page-icon" content="/icons/arrow-right-basic_gray.svg"/><link rel="icon" href="https://app.notion.com/icons/arrow-right-basic_gray.svg"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="35dd1851-4cb2-812a-9a2c-e77ee66b1c0f" class="page sans" data-notion-page-icon="/icons/arrow-right-basic_gray.svg"><header><div class="page-header-icon undefined"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/></div><h1 class="page-title" dir="auto">Streetscape</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><figure id="35dd1851-4cb2-8139-b0eb-dd45623b0f44" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image-7-_1187967941602d9867ab319922dc6abe.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image-7-_1187967941602d9867ab319922dc6abe.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image-7-_1187967941602d9867ab319922dc6abe.png"/></a></figure><p id="35dd1851-4cb2-8198-be11-ddc89131cd2d" class="" dir="auto">Prompt 1:</p><p id="35dd1851-4cb2-81ad-8f2a-c4752e50bba3" class="" dir="auto">Renovate this street to A revitalized urban street scene featuring mixed-use buildings (2–3 stories), wide sidewalks, outdoor seating zones, street trees in planters, protected bike lanes, parallel parking, pedestrian crosswalks, and street lamps. Clearly annotated with labels for &#x27;bike lane&#x27;, &#x27;wide sidewalk&#x27;, &#x27;pedestrian crossing sign&#x27;, &#x27;driving lane&#x27;, &#x27;street tree strip&#x27;, &#x27;street lamp&#x27;, and &#x27;marked crosswalk&#x27;</p><p id="35dd1851-4cb2-816f-a6d1-fc7b06cdbea6" class="" dir="auto">Generated:</p><figure id="35dd1851-4cb2-8150-bdf1-d73b3c9e560d" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/generated-image-september-18-2025-3-25pm_fe3d14a559bd6d33292a2c5af19007a5.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/generated-image-september-18-2025-3-25pm_fe3d14a559bd6d33292a2c5af19007a5.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/generated-image-september-18-2025-3-25pm_fe3d14a559bd6d33292a2c5af19007a5.png"/></a></figure><p id="35dd1851-4cb2-8185-ae41-d3f0f52b227d" class="" dir="auto">Prompt 2:</p><p id="35dd1851-4cb2-8155-83a3-fdcc24c02b0c" class="" dir="auto">Turn this streetscape renovation to clean vector-style streetscape illustration in eye-level perspective. Use bold black line outlines with flat color fills. Highlight zones using shades of blue — dark blue for sidewalks, medium blue for parking and bike lanes, and light blue for driving lanes. Include simplified human figures walking, biking, and interacting. Add minimal cars, street trees with outlines, and simplified building facades in the background. No textures or gradients. Maintain a clear, informative, urban design diagram style with a white background.</p><p id="35dd1851-4cb2-81db-9376-fe0fd6095aae" class="" dir="auto">Generated:</p><figure id="35dd1851-4cb2-81d0-ade1-e32e9c939312" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/street-illustration_b5e8c17dc06cffc829671e0d663bdfb0.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/street-illustration_b5e8c17dc06cffc829671e0d663bdfb0.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/street-illustration_b5e8c17dc06cffc829671e0d663bdfb0.png"/></a></figure><p id="35dd1851-4cb2-8112-9961-fcb69ce0eab4" class="" dir="auto">Prompt 3:</p><p id="35dd1851-4cb2-814a-a3b9-fa94935680d0" class="" dir="auto">Turn it to a clean, detailed cross-section drawing of an urban streetscape.</p><figure id="35dd1851-4cb2-8154-9222-feb48f091776" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/street-illustration-2_639133d882c7e929f6f199e49b875ba3.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/street-illustration-2_639133d882c7e929f6f199e49b875ba3.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/street-illustration-2_639133d882c7e929f6f199e49b875ba3.png"/></a></figure><p id="35dd1851-4cb2-818d-8978-f75ef8635250" class="" dir="auto">Prompt 4:</p><p id="35dd1851-4cb2-81c3-bf79-ca8e0117ec2d" class="" dir="auto">Make a plan view of the street renovation</p><p id="35dd1851-4cb2-811b-9ed0-e7fd25766ac5" class="" dir="auto">Generated:</p><figure id="35dd1851-4cb2-81ed-b1ac-c883a161988b" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/generated-image-september-18-2025-3-26pm_4951c1ad8697baa33d71049af9a2b55a.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/generated-image-september-18-2025-3-26pm_4951c1ad8697baa33d71049af9a2b55a.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/generated-image-september-18-2025-3-26pm_4951c1ad8697baa33d71049af9a2b55a.png"/></a></figure><h3 id="35dd1851-4cb2-81f8-aea2-e134c13df485" style="display:inline-block" dir="auto"><strong>ChatGPT</strong></h3><figure id="35dd1851-4cb2-8115-bbf6-dfff6f5e8213" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image-7-_b8878620caca104cacb083f5159eb572.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image-7-_b8878620caca104cacb083f5159eb572.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image-7-_b8878620caca104cacb083f5159eb572.png"/></a></figure><p id="35dd1851-4cb2-812f-a9fe-ebf33e442088" class="" dir="auto">Prompt 1:</p><p id="35dd1851-4cb2-8137-9b12-f2e03f42c2d6" class="" dir="auto">Can you improve the street design for this street in Dallas, to follow the streetscape guideline and more the street more walkable</p><p id="35dd1851-4cb2-817e-ae0e-eba46977d93c" class="" dir="auto"><strong>Output:</strong></p><p id="35dd1851-4cb2-81ef-b4eb-d345cb3df019" class="" dir="auto">Yes! This street in Dallas has potential to be a much more vibrant, walkable, and pedestrian-friendly environment. Here&#x27;s a breakdown of recommended improvements, based on <strong>urban streetscape guidelines</strong> and best practices for walkability:</p><h3 id="35dd1851-4cb2-815d-9346-ce9bac207b1d" style="display:inline-block" dir="auto"><strong>🔧 Street Redesign Recommendations</strong></h3><h3 id="35dd1851-4cb2-81fb-b06f-f2d6fd155d04" style="display:inline-block" dir="auto"><strong>1. Widen Sidewalks</strong></h3><ul id="35dd1851-4cb2-81bc-8497-ef4649265420" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Current Issue</strong>: The sidewalks are too narrow for comfortable pedestrian use.</li></ul><ul id="35dd1851-4cb2-81f6-9406-d566522bd12f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Solution</strong>: Expand sidewalks to a minimum of 8–12 feet. This allows for pedestrian flow, outdoor seating, planting zones, and amenities like benches and public art.</li></ul><h3 id="35dd1851-4cb2-8175-8155-f92af4807695" style="display:inline-block" dir="auto"><strong>2. Add Street Trees + Green Buffers</strong></h3><ul id="35dd1851-4cb2-81bf-b8ff-dbef55474d47" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Current Issue</strong>: Lack of shade and greenery.</li></ul><ul id="35dd1851-4cb2-8118-a153-f64ef2176105" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Solution</strong>: Add rows of shade trees in planting strips between the curb and sidewalk. They provide:<ul id="35dd1851-4cb2-8148-bf1a-de8f6a9038d8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Comfort (shade and temperature reduction)</li></ul><ul id="35dd1851-4cb2-815a-8685-f6b6c352aa6c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Stormwater management</li></ul><ul id="35dd1851-4cb2-813b-92bb-d86e03572839" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A visual buffer between cars and pedestrians</li></ul></li></ul><h3 id="35dd1851-4cb2-81a1-81de-fe1752d511fc" style="display:inline-block" dir="auto"><strong>3. Implement Curb Extensions (Bulb-Outs)</strong></h3><ul id="35dd1851-4cb2-8154-9e4d-c6cc2cb3c70a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Current Issue</strong>: Long pedestrian crossings.</li></ul><ul id="35dd1851-4cb2-81a8-9874-fe4c0a968587" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Solution</strong>: Add bulb-outs at intersections and key crossings to:<ul id="35dd1851-4cb2-8191-ab42-ef17baaa7e80" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Shorten crossing distances</li></ul><ul id="35dd1851-4cb2-8156-ad9f-e5581c5f51eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Improve pedestrian visibility</li></ul><ul id="35dd1851-4cb2-81c2-b50f-ee7ebc501539" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Calm traffic</li></ul></li></ul><h3 id="35dd1851-4cb2-811d-b9c9-d5ee432702b3" style="display:inline-block" dir="auto"><strong>4. Reduce Lane Widths</strong></h3><ul id="35dd1851-4cb2-8189-bd2a-f7605d9006c7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Current Issue</strong>: Lanes are too wide, encouraging speeding.</li></ul><ul id="35dd1851-4cb2-8188-80fc-c834dc30becc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Solution</strong>: Narrow travel lanes (10–11 ft max) to reduce traffic speed and make room for bike lanes or wider sidewalks.</li></ul><h3 id="35dd1851-4cb2-818d-b212-f6a51aa6fc2b" style="display:inline-block" dir="auto"><strong>5. Add Protected Bike Lanes</strong></h3><ul id="35dd1851-4cb2-81f9-80bb-d76fc88099c5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Current Issue</strong>: No space for cyclists.</li></ul><ul id="35dd1851-4cb2-817d-b208-d4ef27b633c8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Solution</strong>: Add curbside protected bike lanes with green paint or physical buffers (planters, bollards).</li></ul><h3 id="35dd1851-4cb2-815d-8733-c99be2a3bfb5" style="display:inline-block" dir="auto"><strong>6. Upgrade Crosswalks + Pedestrian Signage</strong></h3><ul id="35dd1851-4cb2-81d0-9957-f7138ca40272" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Current Issue</strong>: Crosswalks are faded, and signs are minimal.</li></ul><ul id="35dd1851-4cb2-819a-9bc9-d019bcfa4fa9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Solution</strong>:<ul id="35dd1851-4cb2-81b5-9084-cc9cb523bbdf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Add high-visibility zebra crosswalks</li></ul><ul id="35dd1851-4cb2-815a-ac93-d7a62c2428bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Install pedestrian countdown timers</li></ul><ul id="35dd1851-4cb2-8138-b58d-ef3c752eed0e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Introduce mid-block crossings where necessary</li></ul></li></ul><h3 id="35dd1851-4cb2-8153-9ef4-fc44e6e336c3" style="display:inline-block" dir="auto"><strong>7. Integrate Street Furniture + Lighting</strong></h3><ul id="35dd1851-4cb2-8114-be55-fab4ca5d0aa6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Current Issue</strong>: Lack of benches, lighting, and activity nodes.</li></ul><ul id="35dd1851-4cb2-810e-911c-fbdf03af9857" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Solution</strong>:<ul id="35dd1851-4cb2-8139-811b-f16910018ce9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Add consistent pedestrian-scale lighting</li></ul><ul id="35dd1851-4cb2-81c2-ad8a-c00744efa60d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Install benches, bike racks, trash bins, and kiosks</li></ul><ul id="35dd1851-4cb2-810a-85f0-f96931f60369" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Consider public art installations or murals on blank walls</li></ul></li></ul><h3 id="35dd1851-4cb2-8168-896b-fafa151eb33f" style="display:inline-block" dir="auto"><strong>8. Reconfigure Parking</strong></h3><ul id="35dd1851-4cb2-81e5-abfd-d7d63f9d45c0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Option A</strong>: Retain parallel parking but re-stripe for efficiency</li></ul><ul id="35dd1851-4cb2-81fb-8605-d8baece691f5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Option B</strong>: Remove some parking spaces to make room for seating zones or curb extensions</li></ul><h3 id="35dd1851-4cb2-8136-a206-c1cec078fc67" style="display:inline-block" dir="auto"><strong>9. Mixed-Use Activation</strong></h3><ul id="35dd1851-4cb2-81fb-9024-d14523145f63" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Encourage cafes and retail to open up onto sidewalks with:<ul id="35dd1851-4cb2-8125-b8ef-cf948818a3f1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Outdoor seating zones</li></ul><ul id="35dd1851-4cb2-810d-978d-cb7b8cc00a60" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Canopies/awnings for shade</li></ul><ul id="35dd1851-4cb2-813f-8a94-e5cf3b2be687" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Transparent facades for more active frontages</li></ul></li></ul><h3 id="35dd1851-4cb2-81d5-aed3-ce1409fe0571" style="display:inline-block" dir="auto"><strong>🌳 Concept Sketch or Visual Mockup?</strong></h3><p id="35dd1851-4cb2-813d-b4d7-f12d7ab91680" class="" dir="auto">Would you like me to <strong>generate a visual redesign/mockup</strong> of this street to show the improvements? I can create a sketch that overlays the recommended changes like widened sidewalks, tree zones, curb extensions, and more. Just let me know!</p><p id="35dd1851-4cb2-81f5-a72f-def12e0da04e" class="" dir="auto">Also, if you’re following a specific <strong>Dallas streetscape guideline</strong> (like from City of Dallas Complete Streets Manual), I can tailor it more closely to that too.</p><p id="35dd1851-4cb2-813a-a079-f67da65a2573" class="" dir="auto">Prompt 2:</p><p id="35dd1851-4cb2-8142-b751-d9f50e4a3b9b" class="" dir="auto">good, make the render</p><figure id="35dd1851-4cb2-8148-9adc-d6e197c06d95" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image_8c24522d2dc910ff90cf1bbeb774eff9.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image_8c24522d2dc910ff90cf1bbeb774eff9.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image_8c24522d2dc910ff90cf1bbeb774eff9.png"/></a></figure><p id="35dd1851-4cb2-81cc-8bc4-e627501c5f49" class="" dir="auto">Prompt 3:</p><p id="35dd1851-4cb2-817c-b112-f51c1b4713da" class="" dir="auto">good, can you make it to A black-and-white architectural streetscape diagram in two-point perspective, hand-drawn line art style. A revitalized urban street scene featuring mixed-use buildings (2–3 stories), wide sidewalks, outdoor seating zones, street trees in planters, protected bike lanes, parallel parking, pedestrian crosswalks, and street lamps. Clearly annotated with labels for &#x27;bike lane&#x27;, &#x27;wide sidewalk&#x27;, &#x27;pedestrian crossing sign&#x27;, &#x27;driving lane&#x27;, &#x27;street tree strip&#x27;, &#x27;street lamp&#x27;, and &#x27;marked crosswalk&#x27;. Clean technical illustration layout with a professional urban planning feel.</p><figure id="35dd1851-4cb2-8173-9cb5-dfc23dc4f43e" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image_04ce5b08b67d4a3fb329ef0d129a91f5.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image_04ce5b08b67d4a3fb329ef0d129a91f5.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image_04ce5b08b67d4a3fb329ef0d129a91f5.png"/></a></figure><figure id="35dd1851-4cb2-814d-84fd-f16b94c6764c" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image_00881ad4f2a17c45bf473a9bfde2b760.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image_00881ad4f2a17c45bf473a9bfde2b760.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/image_00881ad4f2a17c45bf473a9bfde2b760.png"/></a></figure><p id="35dd1851-4cb2-81b1-9517-ebbf9af9a02b" class="" dir="auto">
+</p><p id="35dd1851-4cb2-8159-94be-ee8f2a6210bd" class="" dir="auto">Prompt:</p><p id="35dd1851-4cb2-8123-827e-f7bc0dc718a4" class="" dir="auto">Transform this streetscape illustration into a realistic rendering. Apply photorealistic materials and textures to all elements: use concrete or stone for pavements, asphalt for roads, glass and metal for building facades, realistic foliage for trees and planting, and natural materials for urban furniture. Add soft natural daylight, subtle shadows, and people in scale to bring the scene to life. Maintain the original layout and perspective from the illustration, but enhance it with depth, lighting, and realism. The final rendering should feel atmospheric, modern, and presentation-ready.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

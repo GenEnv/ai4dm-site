@@ -1,0 +1,768 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Timeline Site Analysis</title><meta name="data-notion-page-icon" content="/icons/arrow-right-basic_gray.svg"/><link rel="icon" href="https://app.notion.com/icons/arrow-right-basic_gray.svg"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="36fd1851-4cb2-8039-9ef4-c029de5060a7" class="page sans" data-notion-page-icon="/icons/arrow-right-basic_gray.svg"><header><div class="page-header-icon undefined"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/></div><h1 class="page-title" dir="auto">Timeline Site Analysis</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h3 id="37ad1851-4cb2-80fb-a2ea-f0595b4f5ff9" style="display:inline-block" dir="auto"><strong>Prompt</strong></h3><p id="37ad1851-4cb2-804b-ab3c-cf2b7e5a0c34" class="" dir="auto"><em>Create a </em><em><strong>vertical architectural timeline board</strong></em><em> illustrating the massing evolution of the </em><em><strong>Sydney Opera House</strong></em><em> from concept to final construction.</em></p><p id="37ad1851-4cb2-80ca-8269-fa977ffe05de" class="" dir="auto"><em><strong>Timeline Structure</strong></em></p><ul id="37ad1851-4cb2-8037-98a4-c1e00d9ec7d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Present </em><em><strong>5 key stages</strong></em><em> of the project&#x27;s evolution in chronological order.</em></li></ul><ul id="37ad1851-4cb2-80a6-bf10-e0075182231f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Use consistent axonometric massing diagrams and concise annotations.</em></li></ul><ul id="37ad1851-4cb2-80a3-b891-d6c43b3d86ba" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Connect each stage with a clear visual timeline.</em></li></ul><p id="37ad1851-4cb2-80e5-94c3-c6d726f4784e" class="" dir="auto"><em><strong>Key Evolution Stages</strong></em></p><ol type="1" id="37ad1851-4cb2-80f0-ab29-e9ff13f10691" class="numbered-list" start="1" dir="auto"><li><em><strong>Original Competition Proposal (1957)</strong></em><em> – Early sculptural concept with free-form shell roofs emerging from a large podium.</em></li></ol><ol type="1" id="37ad1851-4cb2-8023-b1fb-dc8a0d3b92d7" class="numbered-list" start="2" dir="auto"><li><em><strong>Podium Development</strong></em><em> – Construction and refinement of the stepped podium establishing the building&#x27;s base and public terraces.</em></li></ol><ol type="1" id="37ad1851-4cb2-80b7-a122-e2b984d5106f" class="numbered-list" start="3" dir="auto"><li><em><strong>Shell Geometry Exploration</strong></em><em> – Studies testing different shell shapes and structural systems before a buildable solution was found.</em></li></ol><ol type="1" id="37ad1851-4cb2-8084-8a50-f86b1298d900" class="numbered-list" start="4" dir="auto"><li><em><strong>Spherical Shell Solution</strong></em><em> – Development of the final geometry where all roof shells are derived from sections of a single sphere, enabling efficient construction.</em></li></ol><ol type="1" id="37ad1851-4cb2-8057-8cba-d9547ba42f87" class="numbered-list" start="5" dir="auto"><li><em><strong>Completed Opera House (1973)</strong></em><em> – Fully realized building with tiled shells, glazed end walls, and integrated waterfront public spaces.</em></li></ol><p id="37ad1851-4cb2-80bd-8710-d81f67d3291f" class="" dir="auto"><em><strong>Supporting Graphics</strong></em></p><ul id="37ad1851-4cb2-805f-b033-db77d7ae5419" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Include geometric studies, shell construction diagrams, and exploded assembly views.</em></li></ul><ul id="37ad1851-4cb2-8052-b9e7-e69402032b23" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Highlight major structural and design breakthroughs with a single accent color.</em></li></ul><ul id="37ad1851-4cb2-8034-b538-c564c1650aee" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Add brief annotations describing the significance of each stage.</em></li></ul><p id="37ad1851-4cb2-80f8-a626-f2145f04fdc3" class="" dir="auto"><em><strong>Presentation Style</strong></em></p><ul id="37ad1851-4cb2-805b-b18b-f188f0c2903c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Modern, minimalist architectural graphic design.</em></li></ul><ul id="37ad1851-4cb2-80df-8eb3-e3222be4a810" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>White background, clean linework, generous spacing, and professional typography.</em></li></ul><ul id="37ad1851-4cb2-8026-8d2b-cd36eccc2545" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Competition-quality layout emphasizing the evolution of form, geometry, and construction.</em></li></ul><p id="37ad1851-4cb2-8067-99e5-dcb03a916cb4" class="" dir="auto">
+</p><figure id="37ad1851-4cb2-80da-b140-d916b1b39a4e" class="image" data-notion-image="Timeline%20Site%20Analysis/image.png" dir="ltr"><a href="Timeline%20Site%20Analysis/image.png"><img style="width:704.00390625px" src="Timeline%20Site%20Analysis/image.png"/></a></figure><hr id="37ad1851-4cb2-805b-8272-e9315abca3f4" dir="auto"/><h3 id="37ad1851-4cb2-80b8-b52f-f9903fd39499" style="display:inline-block" dir="auto"><strong>Prompt</strong></h3><p id="37ad1851-4cb2-80d0-9b59-f1417e7e02dd" class="" dir="auto">Generate a <strong>horizontal collage-style timeline analysis diagram</strong> of the redevelopment of <strong>Oakridge Park, Vancouver</strong>.</p><p id="37ad1851-4cb2-80d1-a27d-d0bd31168c25" class="" dir="auto"><strong>Diagram Structure</strong></p><ul id="37ad1851-4cb2-80ca-9789-c41b3d6f451e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Place a horizontal timeline across the center of the image with <strong>5 key redevelopment stages</strong>:<ul id="37ad1851-4cb2-80e8-981a-c4863b4c725b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Existing Mall Condition (1959)</li></ul><ul id="37ad1851-4cb2-8065-ba92-ed46e6600ffd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Redevelopment Vision &amp; Approval (2014)</li></ul><ul id="37ad1851-4cb2-80e5-93d8-da25fb25bc17" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Demolition &amp; Site Preparation (2020)</li></ul><ul id="37ad1851-4cb2-80a9-b715-ebef65a7f8e7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tower &amp; Podium Construction (2022–2025)</li></ul><ul id="37ad1851-4cb2-8067-b1bb-f9923b02cf8e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Completed Oakridge Park Community (Future Vision)</li></ul></li></ul><ul id="37ad1851-4cb2-8001-b437-d23c6283c1d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each stage should include representative imagery, architectural renderings, aerial views, or construction photographs paired with concise descriptions.</li></ul><ul id="37ad1851-4cb2-8042-9d83-e3c1bad327a8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Create a continuous left-to-right narrative showing the site&#x27;s transformation over time.</li></ul><p id="37ad1851-4cb2-80c9-aaea-d7b377e7b385" class="" dir="auto"><strong>Visual Elements</strong></p><ul id="37ad1851-4cb2-80ce-b45a-e3ae1cd0f16f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Include aerial photos, site plans, massing diagrams, construction imagery, and final renderings from each phase.</li></ul><ul id="37ad1851-4cb2-8090-85ce-efd06b071403" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Add people, vehicles, and public activities representative of each period.</li></ul><ul id="37ad1851-4cb2-80d0-b59b-f1aadf022d94" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Blend historic mall imagery with contemporary urban development visuals to show the evolution of the site.</li></ul><p id="37ad1851-4cb2-80ed-9061-f5c6b715197a" class="" dir="auto"><strong>Visual Style</strong></p><ul id="37ad1851-4cb2-80ed-aa4d-f3e1bb58e511" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Use a collage-based architectural presentation style.</li></ul><ul id="37ad1851-4cb2-8083-a253-e4cf270ba125" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Base palette should be black, white, and gray with dark red accent graphics.</li></ul><ul id="37ad1851-4cb2-80f2-aa46-c69ccfade511" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Overlay dark red hand-drawn outlines around major buildings, massing forms, and key interventions.</li></ul><ul id="37ad1851-4cb2-803b-91db-f0a8a4cfade5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Incorporate low-opacity dark red silhouettes to highlight new towers, parks, and public spaces.</li></ul><p id="37ad1851-4cb2-802a-8d78-c862ef2016ac" class="" dir="auto"><strong>Text Elements</strong></p><ul id="37ad1851-4cb2-80ed-9de3-e12f6382809c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Title: <strong>&quot;OAKRIDGE PARK SITE ANALYSIS&quot;</strong> in large bold serif typography using dark red.</li></ul><ul id="37ad1851-4cb2-8084-bfc0-fa7ede733c66" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Include short captions and milestone descriptions for each timeline stage.</li></ul><ul id="37ad1851-4cb2-8039-a7e7-c7a2a141efbd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Use arrows, dates, and graphic callouts to emphasize key moments in the redevelopment process.</li></ul><p id="37ad1851-4cb2-80a0-a312-e4fa652d11a1" class="" dir="auto"><strong>Atmosphere</strong></p><ul id="37ad1851-4cb2-80cb-9dbd-c46eafec5d6d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Create a unified visual story connecting the original suburban shopping mall to the final mixed-use urban district.</li></ul><ul id="37ad1851-4cb2-8010-926e-c8f514308d32" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Blend historical photographs, construction scenes, architectural drawings, and future renderings into a seamless composition.</li></ul><ul id="37ad1851-4cb2-8042-b484-fcc63de63ed3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Emphasize increasing density, public realm improvements, transit integration, and the rooftop park as defining transformations.</li></ul><p id="37ad1851-4cb2-8071-abe2-f7afff4e9fe7" class="" dir="auto"><strong>Technical Requirements</strong></p><ul id="37ad1851-4cb2-802d-ba12-f033680a28bf" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Layout: 16:9 landscape format.</li></ul><ul id="37ad1851-4cb2-80ac-b5e3-da1f68a74ed0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Composition: Asymmetrical balance with strong visual hierarchy.</li></ul><ul id="37ad1851-4cb2-80fc-8ab7-f3660e9158d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Elements: Mix of aerial imagery, architectural renderings, massing diagrams, construction photography, and human activity scenes.</li></ul><ul id="37ad1851-4cb2-8052-934e-ef2e5b705ff6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Fonts: Bold serif typography with editorial-style annotations.</li></ul><ul id="37ad1851-4cb2-80f2-824d-e76bb581357e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Texture: Vintage collage textures combined with contemporary architectural graphics.</li></ul><ul id="37ad1851-4cb2-80c0-b0c7-dac7df37a234" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Color Palette: Black, white, gray, and dark red accents only.</li></ul><ul id="37ad1851-4cb2-804c-9b88-f30594195fc1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Narrative Quality: Clearly communicate the historical and physical evolution of Oakridge Park from shopping mall to complete urban community.</li></ul><ul id="37ad1851-4cb2-80ea-a80c-f052a605751e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><figure id="37ad1851-4cb2-804c-901e-fcabb5b9b9ec" class="image" data-notion-image="Timeline%20Site%20Analysis/image%201.png" dir="ltr"><a href="Timeline%20Site%20Analysis/image%201.png"><img style="width:704.00390625px" src="Timeline%20Site%20Analysis/image%201.png"/></a></figure><hr id="37ad1851-4cb2-8033-8e1b-ee661a1f1b7a" dir="auto"/><h3 id="37ad1851-4cb2-803b-b3ed-fca855053cea" style="display:inline-block" dir="auto">Prompt</h3><p id="37ad1851-4cb2-80bd-861d-e5704f320988" class="" dir="auto">Create a <strong>horizontal plan-view timeline infographic</strong> illustrating the transformation of the <strong>High Line</strong> from abandoned railway infrastructure to a world-renowned urban landscape.</p><p id="37ad1851-4cb2-80a5-ac00-c6fdbdbed0b7" class="" dir="auto"><strong>Composition</strong></p><ul id="37ad1851-4cb2-80c3-8a08-f3f975d6d328" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Design the timeline as a sequence of <strong>five plan-view diagrams</strong> arranged from left to right across a clean white background.</li></ul><ul id="37ad1851-4cb2-80a0-84ee-f6e02ba6509b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each stage should show the same portion of the High Line from a bird&#x27;s-eye perspective to clearly illustrate change over time.</li></ul><ul id="37ad1851-4cb2-80b6-b560-c6db44fd5ad4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Connect each plan with arrows and a continuous timeline graphic.</li></ul><p id="37ad1851-4cb2-80ce-940b-ec12722fffac" class="" dir="auto"><strong>Timeline Stages</strong></p><ol type="1" id="37ad1851-4cb2-80af-82a6-d9c2939a2448" class="numbered-list" start="1" dir="auto"><li><strong>1930s Active Rail Corridor</strong> – Freight railway tracks serving Manhattan&#x27;s industrial district.</li></ol><ol type="1" id="37ad1851-4cb2-8071-95aa-e870d18bee7f" class="numbered-list" start="2" dir="auto"><li><strong>1980s Abandonment</strong> – Disused infrastructure with spontaneous vegetation emerging between tracks.</li></ol><ol type="1" id="37ad1851-4cb2-80da-b2c3-ce9b5b0663e5" class="numbered-list" start="3" dir="auto"><li><strong>1999 Preservation Movement</strong> – Community advocacy and early visions for adaptive reuse.</li></ol><ol type="1" id="37ad1851-4cb2-806b-ab0a-f8e261c575d7" class="numbered-list" start="4" dir="auto"><li><strong>2006–2014 Landscape Transformation</strong> – Phased implementation of pathways, planting systems, seating, and public spaces.</li></ol><ol type="1" id="37ad1851-4cb2-8071-8e8e-ef6171c658e9" class="numbered-list" start="5" dir="auto"><li><strong>Present-Day High Line</strong> – Mature landscape featuring diverse vegetation, gathering spaces, art installations, and pedestrian circulation.</li></ol><p id="37ad1851-4cb2-80d9-8b24-d9a673bfe067" class="" dir="auto"><strong>Graphic Style</strong></p><ul id="37ad1851-4cb2-8077-871d-ec3d2aeef1ce" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Use simplified landscape architecture diagrams rather than realistic imagery.</li></ul><ul id="37ad1851-4cb2-8032-bf2c-c838b63a660a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Illustrate tracks, pathways, planting zones, buildings, and circulation using clean vector graphics.</li></ul><ul id="37ad1851-4cb2-80f3-894a-c76d38075091" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Maintain a consistent drawing style across all five plans.</li></ul><p id="37ad1851-4cb2-80c7-a1d4-c6b4f47815e6" class="" dir="auto"><strong>Colour Palette</strong></p><ul id="37ad1851-4cb2-8053-9443-fc183d174d27" class="bulleted-list" dir="auto"><li style="list-style-type:disc">White background with a cohesive palette of muted greens, sage, charcoal gray, warm beige, and soft terracotta.</li></ul><ul id="37ad1851-4cb2-8082-ad62-d5188f7504d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Show ecological growth and increasing landscape complexity through gradual colour changes.</li></ul><ul id="37ad1851-4cb2-803a-91a8-d01df543a3ba" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Use a single accent colour for dates, arrows, and key annotations.</li></ul><p id="37ad1851-4cb2-80c5-abcb-cb6f5b0cc535" class="" dir="auto"><strong>Details &amp; Annotation</strong></p><ul id="37ad1851-4cb2-80f5-9689-dd038d140e49" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Include concise labels, dates, and callouts describing major changes at each stage.</li></ul><ul id="37ad1851-4cb2-806d-b8fd-c43ff0a31657" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Add small diagrammatic icons showing ecology, public space, and adaptive reuse.</li></ul><ul id="37ad1851-4cb2-8050-a174-ef04b0219428" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Use minimal text and rely primarily on graphics to tell the story.</li></ul><p id="37ad1851-4cb2-8004-a8ec-e75a5f54af69" class="" dir="auto"><strong>Presentation Quality</strong></p><ul id="37ad1851-4cb2-808a-bf9c-ebab2febbe10" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Clean poster-ready layout suitable for a landscape architecture portfolio or presentation board.</li></ul><ul id="37ad1851-4cb2-809e-a738-e55f194a5ac3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Strong visual hierarchy, generous white space, and professional typography.</li></ul><ul id="37ad1851-4cb2-800b-9b6b-f7cb42ee1f01" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The final graphic should read as a cohesive landscape evolution diagram rather than five separate images.</li></ul><figure id="37ad1851-4cb2-8003-af08-c5240da6e38f" class="image" data-notion-image="Timeline%20Site%20Analysis/image%202.png" dir="ltr"><a href="Timeline%20Site%20Analysis/image%202.png"><img style="width:704.015625px" src="Timeline%20Site%20Analysis/image%202.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,779 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>AI 4 DM</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="36cd1851-4cb2-8011-8cd2-c0438f7bc080" class="page sans"><header><img class="page-cover-image" src="AI%204%20DM/Gemini_Generated_Image_28s1nb28s1nb28s1.png" style="object-position:center 74.49%"/><h1 class="page-title" dir="auto">AI 4 DM</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h1 id="36cd1851-4cb2-8003-a949-d2f84392f6f1" style="display:inline-block" dir="auto">The Main Stages of Designing with AI</h1><div id="36cd1851-4cb2-80c2-92a9-d10ffdd7ffa7" class="column-list" data-notion-column-list="" dir="auto"><div id="36cd1851-4cb2-8008-a8fc-d2766ce41031" style="width:25%" class="column" data-notion-column-ratio="0.25" dir="auto"><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><h3 id="364d1851-4cb2-8063-810d-c10feb9170ba" style="display:inline-block">01 Ideation   </h3></summary><div class="indented"><figure id="366d1851-4cb2-808d-9846-ea8413b33fed" class="link-to-page"><a href="AI%204%20DM/Concept%20Generation%20366d18514cb2808d9846ea8413b33fed.html" data-notion-page-id="366d1851-4cb2-808d-9846-ea8413b33fed" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Concept Generation</a></figure><figure id="366d1851-4cb2-80db-9af4-c911aa8723c7" class="link-to-page"><a href="AI%204%20DM/Precedent%20Exploration%20366d18514cb280db9af4c911aa8723c7.html" data-notion-page-id="366d1851-4cb2-80db-9af4-c911aa8723c7" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Precedent Exploration</a></figure><figure id="366d1851-4cb2-8082-a336-f1704926f550" class="link-to-page"><a href="AI%204%20DM/Prompt%20Engineering%20366d18514cb28082a336f1704926f550.html" data-notion-page-id="366d1851-4cb2-8082-a336-f1704926f550" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Prompt Engineering</a></figure><figure id="366d1851-4cb2-80f6-ad4b-db7ddcc768fb" class="link-to-page"><a href="AI%204%20DM/Reference%20Inputs%20366d18514cb280f6ad4bdb7ddcc768fb.html" data-notion-page-id="366d1851-4cb2-80f6-ad4b-db7ddcc768fb" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Reference Inputs</a></figure><figure id="366d1851-4cb2-80a1-815d-e45a317af6d2" class="link-to-page"><a href="AI%204%20DM/Iterative%20Model%20(Diagrammatic)%20Generations%20366d18514cb280a1815de45a317af6d2.html" data-notion-page-id="366d1851-4cb2-80a1-815d-e45a317af6d2" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Iterative Model (Diagrammatic) Generations</a></figure><p id="36cd1851-4cb2-8034-bc94-cdcc7a2f9164" class="" dir="auto">
+</p></div></details></div><div id="36cd1851-4cb2-80e3-8ebc-f3cd8aeffb8f" style="width:25%" class="column" data-notion-column-ratio="0.25" dir="auto"><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><h3 id="364d1851-4cb2-8073-b2ae-cecbc3460458" style="display:inline-block">02 Iteration</h3></summary><div class="indented"><figure id="364d1851-4cb2-804c-8a53-ddd70ff7f76d" class="link-to-page"><a href="AI%204%20DM/Iterative%20Prompting%20364d18514cb2804c8a53ddd70ff7f76d.html" data-notion-page-id="364d1851-4cb2-804c-8a53-ddd70ff7f76d" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Iterative Prompting</a></figure><figure id="364d1851-4cb2-8080-b7c5-f5e881fbc8b3" class="link-to-page"><a href="AI%204%20DM/Constraint%20Locking%20364d18514cb28080b7c5f5e881fbc8b3.html" data-notion-page-id="364d1851-4cb2-8080-b7c5-f5e881fbc8b3" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Constraint Locking</a></figure><figure id="364d1851-4cb2-8038-8208-d85df546d1f4" class="link-to-page"><a href="AI%204%20DM/Hybrid%20Workflow%20364d18514cb280388208d85df546d1f4.html" data-notion-page-id="364d1851-4cb2-8038-8208-d85df546d1f4" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Hybrid Workflow</a></figure><figure id="368d1851-4cb2-8044-9132-e3e136838808" class="link-to-page"><a href="AI%204%20DM/Markup%20368d18514cb280449132e3e136838808.html" data-notion-page-id="368d1851-4cb2-8044-9132-e3e136838808" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Markup</a></figure><p id="36cd1851-4cb2-80e1-8b59-cb54351ffffa" class="" dir="auto">
+</p></div></details></div><div id="36cd1851-4cb2-8052-86d6-c7f6215d6506" style="width:20.65548780487805%" class="column" data-notion-column-ratio="0.20655487804878048" dir="auto"><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><h3 id="364d1851-4cb2-8028-9c26-ce2a930f33a9" style="display:inline-block">03 Final Processes</h3></summary><div class="indented"><figure id="366d1851-4cb2-80a4-8ceb-dec5feccf750" class="link-to-page"><a href="AI%204%20DM/Rendering%20366d18514cb280a48cebdec5feccf750.html" data-notion-page-id="366d1851-4cb2-80a4-8ceb-dec5feccf750" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Rendering</a></figure><figure id="366d1851-4cb2-806c-a088-f19c7ed1cf11" class="link-to-page"><a href="AI%204%20DM/Identifying%20Gaps%20366d18514cb2806ca088f19c7ed1cf11.html" data-notion-page-id="366d1851-4cb2-806c-a088-f19c7ed1cf11" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Identifying Gaps</a></figure><figure id="366d1851-4cb2-804c-8b6a-df5d224270af" class="link-to-page"><a href="AI%204%20DM/Technical%20Drawing%20(3D%20to%202D)%20366d18514cb2804c8b6adf5d224270af.html" data-notion-page-id="366d1851-4cb2-804c-8b6a-df5d224270af" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Technical Drawing (3D to 2D)</a></figure><figure id="366d1851-4cb2-8043-9043-c0ebf451326a" class="link-to-page"><a href="AI%204%20DM/Post%20Processing%20366d18514cb280439043c0ebf451326a.html" data-notion-page-id="366d1851-4cb2-8043-9043-c0ebf451326a" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Post Processing</a></figure><figure id="366d1851-4cb2-80de-95ae-c6edaa2d8d2b" class="link-to-page"><a href="AI%204%20DM/Workflow%20Documentation%20366d18514cb280de95aec6edaa2d8d2b.html" data-notion-page-id="366d1851-4cb2-80de-95ae-c6edaa2d8d2b" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Workflow Documentation</a></figure><p id="36cd1851-4cb2-80e9-b252-ed62cd7609ab" class="" dir="auto">
+</p></div></details></div><div id="36cd1851-4cb2-80c0-831d-e3ee976d7468" style="width:29.34451219512195%" class="column" data-notion-column-ratio="0.2934451219512195" dir="auto"><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><h3 id="364d1851-4cb2-808a-bb1a-d87b3b4a8fcc" style="display:inline-block">04 Problem Solving</h3></summary><div class="indented"><figure id="364d1851-4cb2-803b-9b28-c70cf2dcae0b" class="link-to-page"><a href="AI%204%20DM/New%20Chats,%20Prompt%20Edit%20&amp;%20Regenerate%20364d18514cb2803b9b28c70cf2dcae0b.html" data-notion-page-id="364d1851-4cb2-803b-9b28-c70cf2dcae0b" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>New Chats, Prompt Edit &amp; Regenerate</a></figure><figure id="364d1851-4cb2-80a3-8828-d588bb008481" class="link-to-page"><a href="AI%204%20DM/Manual%20Intervention%20364d18514cb280a38828d588bb008481.html" data-notion-page-id="364d1851-4cb2-80a3-8828-d588bb008481" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Manual Intervention</a></figure><figure id="364d1851-4cb2-8013-9283-e22ef8ebe346" class="link-to-page"><a href="AI%204%20DM/Task%20Simplification%20364d18514cb280139283e22ef8ebe346.html" data-notion-page-id="364d1851-4cb2-8013-9283-e22ef8ebe346" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Task Simplification</a></figure><figure id="364d1851-4cb2-8073-a89b-cf7af425ff42" class="link-to-page"><a href="AI%204%20DM/Regenerate%20From%20Alternate%20View%20364d18514cb28073a89bcf7af425ff42.html" data-notion-page-id="364d1851-4cb2-8073-a89b-cf7af425ff42" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-southeast_gray.svg"/>Regenerate From Alternate View</a></figure><p id="36cd1851-4cb2-8034-9bef-ff04b12dbcf2" class="" dir="auto">
+</p><p id="366d1851-4cb2-808e-b7a6-db8b74701798" class="" dir="auto">
+</p><p id="36cd1851-4cb2-80bf-8b6c-d84db98f7a91" class="" dir="auto">
+</p></div></details></div></div><hr id="36fd1851-4cb2-802a-8e77-de09da5bd113" dir="auto"/><p id="36fd1851-4cb2-80f8-ac66-c3a49da2c844" class="" dir="auto">
+</p><p id="36fd1851-4cb2-800f-be82-cfe1d3898a07" class="" dir="auto">
+</p><h1 id="36cd1851-4cb2-80e1-93c3-eaefd639096d" style="display:inline-block" dir="auto">Summary of AI Visual Generation</h1><div id="36cd1851-4cb2-804e-8a0c-ebc4201a2365" class="column-list" data-notion-column-list="" dir="auto"><div id="36cd1851-4cb2-80e9-8307-e57a4007e394" style="width:20%" class="column" data-notion-column-ratio="0.2" dir="auto"><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><h3 id="36cd1851-4cb2-80e8-9ef4-dd7f08f64eca" style="display:inline-block">2D to 3D</h3></summary><div class="indented"><figure id="36fd1851-4cb2-803e-b707-cc81bd4c3900" class="link-to-page"><a href="AI%204%20DM/Plan%20to%20Bird%E2%80%99s-Eye%20&amp;%20Perspective%2036fd18514cb2803eb707cc81bd4c3900.html" data-notion-page-id="36fd1851-4cb2-803e-b707-cc81bd4c3900" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Plan to Bird’s-Eye &amp; Perspective</a></figure><figure id="36fd1851-4cb2-8068-80c6-d53ae2e43e2d" class="link-to-page"><a href="AI%204%20DM/Photo%20to%203D%20Building%20Model%2036fd18514cb2806880c6d53ae2e43e2d.html" data-notion-page-id="36fd1851-4cb2-8068-80c6-d53ae2e43e2d" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Photo to 3D Building Model</a></figure><figure id="36fd1851-4cb2-808d-be47-fb56391e916b" class="link-to-page"><a href="AI%204%20DM/Photo%20to%20Model%20on%20Desk%2036fd18514cb2808dbe47fb56391e916b.html" data-notion-page-id="36fd1851-4cb2-808d-be47-fb56391e916b" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Photo to Model on Desk</a></figure><figure id="36fd1851-4cb2-8097-8cf8-c886dd9628ed" class="link-to-page"><a href="AI%204%20DM/Photo%20Plan%20to%20Isometric%20Diagram%2036fd18514cb280978cf8c886dd9628ed.html" data-notion-page-id="36fd1851-4cb2-8097-8cf8-c886dd9628ed" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Photo/Plan to Isometric Diagram</a></figure><figure id="36fd1851-4cb2-801d-9db7-e921a4d2cc4b" class="link-to-page"><a href="AI%204%20DM/Section%20to%203D%2036fd18514cb2801d9db7e921a4d2cc4b.html" data-notion-page-id="36fd1851-4cb2-801d-9db7-e921a4d2cc4b" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Section to 3D</a></figure><p id="36fd1851-4cb2-80ec-a5d5-c1b7d6af6bd4" class="" dir="auto">
+</p></div></details></div><div id="36cd1851-4cb2-8094-b63a-f166dfdf85a9" style="width:20%" class="column" data-notion-column-ratio="0.2" dir="auto"><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><h3 id="36cd1851-4cb2-80af-8799-ec4f4b80ba51" style="display:inline-block">3D to 2D</h3></summary><div class="indented"><figure id="36fd1851-4cb2-8083-acfd-ef72c09c360d" class="link-to-page"><a href="AI%204%20DM/Photo%20to%20Elevation%20(or%20CAD)%2036fd18514cb28083acfdef72c09c360d.html" data-notion-page-id="36fd1851-4cb2-8083-acfd-ef72c09c360d" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Photo to Elevation (or CAD)</a></figure><figure id="36fd1851-4cb2-80e1-b1f1-f4202871428e" class="link-to-page"><a href="AI%204%20DM/Front%20and%20Side%20View%2036fd18514cb280e1b1f1f4202871428e.html" data-notion-page-id="36fd1851-4cb2-80e1-b1f1-f4202871428e" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Front and Side View</a></figure><figure id="36fd1851-4cb2-80f6-8d6e-d0c51a4858fa" class="link-to-page"><a href="AI%204%20DM/Perspective%20to%20Plan%2036fd18514cb280f68d6ed0c51a4858fa.html" data-notion-page-id="36fd1851-4cb2-80f6-8d6e-d0c51a4858fa" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Perspective to Plan</a></figure><p id="36fd1851-4cb2-80bf-9045-d855cf7deeb3" class="" dir="auto">
+</p></div></details></div><div id="36cd1851-4cb2-809a-9111-f7e85d382e7d" style="width:20%" class="column" data-notion-column-ratio="0.2" dir="auto"><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><h3 id="36cd1851-4cb2-8056-93a8-e8a99164dc65" style="display:inline-block">Rendering </h3></summary><div class="indented"><figure id="36fd1851-4cb2-8089-ab9d-e17e104339b6" class="link-to-page"><a href="AI%204%20DM/Adding%20Context%20(1)%2036fd18514cb28089ab9de17e104339b6.html" data-notion-page-id="36fd1851-4cb2-8089-ab9d-e17e104339b6" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Adding Context (1)</a></figure><figure id="36fd1851-4cb2-800b-95ab-cabb5ba4bee1" class="link-to-page"><a href="AI%204%20DM/Controlling%20Materiality%20(1)%2036fd18514cb2800b95abcabb5ba4bee1.html" data-notion-page-id="36fd1851-4cb2-800b-95ab-cabb5ba4bee1" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Controlling Materiality (1)</a></figure><figure id="36fd1851-4cb2-8040-9a33-ff86b16ae5fd" class="link-to-page"><a href="AI%204%20DM/Changing%20Render%20Styles%20(1)%2036fd18514cb280409a33ff86b16ae5fd.html" data-notion-page-id="36fd1851-4cb2-8040-9a33-ff86b16ae5fd" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Changing Render Styles (1)</a></figure><figure id="36fd1851-4cb2-80fb-b754-f80581849b73" class="link-to-page"><a href="AI%204%20DM/Changing%20Rendered%20Views%20(1)%2036fd18514cb280fbb754f80581849b73.html" data-notion-page-id="36fd1851-4cb2-80fb-b754-f80581849b73" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Changing Rendered Views (1)</a></figure><p id="36cd1851-4cb2-8063-bc76-dd6ce2239ba9" class="" dir="auto">
+</p></div></details></div><div id="36cd1851-4cb2-801b-b6e6-ccd2f1e36f02" style="width:20%" class="column" data-notion-column-ratio="0.2" dir="auto"><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><h3 id="36cd1851-4cb2-80b4-83fd-ece0fe237297" style="display:inline-block">Workflows</h3></summary></details></div><div id="36cd1851-4cb2-80ac-8277-d975a5522492" style="width:20%" class="column" data-notion-column-ratio="0.2" dir="auto"><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0"><h3 id="36cd1851-4cb2-8056-b571-cd4805ccffb8" style="display:inline-block">Presentation &amp; Layout</h3></summary><div class="indented"><figure id="36fd1851-4cb2-80e0-bfc0-f00641105b6e" class="link-to-page"><a href="AI%204%20DM/Presentation%20Board%2036fd18514cb280e0bfc0f00641105b6e.html" data-notion-page-id="36fd1851-4cb2-80e0-bfc0-f00641105b6e" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Presentation Board</a></figure><figure id="36fd1851-4cb2-8073-be19-cb7a15771893" class="link-to-page"><a href="AI%204%20DM/Rendering%20to%20Presentation%20Board%2036fd18514cb28073be19cb7a15771893.html" data-notion-page-id="36fd1851-4cb2-8073-be19-cb7a15771893" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Rendering to Presentation Board</a></figure><figure id="36fd1851-4cb2-8025-b0b3-d930cf5bd542" class="link-to-page"><a href="AI%204%20DM/Landscape%20Design%20Board%2036fd18514cb28025b0b3d930cf5bd542.html" data-notion-page-id="36fd1851-4cb2-8025-b0b3-d930cf5bd542" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Landscape Design Board</a></figure><figure id="36fd1851-4cb2-8039-9ef4-c029de5060a7" class="link-to-page"><a href="AI%204%20DM/Timeline%20Site%20Analysis%2036fd18514cb280399ef4c029de5060a7.html" data-notion-page-id="36fd1851-4cb2-8039-9ef4-c029de5060a7" data-notion-space-id="813904f8-a912-4b36-9dcc-2f429e5ce487"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/>Timeline Site Analysis</a></figure></div></details></div></div><p id="36ed1851-4cb2-80bf-ac79-fe643f60501e" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

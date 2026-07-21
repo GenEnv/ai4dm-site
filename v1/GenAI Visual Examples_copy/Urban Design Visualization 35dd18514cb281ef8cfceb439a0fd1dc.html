@@ -1,0 +1,767 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Urban Design Visualization</title><meta name="data-notion-page-icon" content="/icons/arrow-right-basic_gray.svg"/><link rel="icon" href="https://app.notion.com/icons/arrow-right-basic_gray.svg"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="35dd1851-4cb2-81ef-8cfc-eb439a0fd1dc" class="page sans" data-notion-page-icon="/icons/arrow-right-basic_gray.svg"><header><div class="page-header-icon undefined"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/></div><h1 class="page-title" dir="auto">Urban Design Visualization</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><p id="35dd1851-4cb2-81e3-b9bf-ed0fab110bcb" class="" dir="auto">Input:</p><figure id="35dd1851-4cb2-8174-b6b6-ccc3a1220bbf" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/view-1_9493d11c659f2b706b0168313fa6659b.jpg" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/view-1_9493d11c659f2b706b0168313fa6659b.jpg"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/view-1_9493d11c659f2b706b0168313fa6659b.jpg"/></a></figure><p id="35dd1851-4cb2-81aa-8075-eeff5da43546" class="" dir="auto">Create an urban design axonometric masterplan diagram in a clean architectural illustration style.</p><p id="35dd1851-4cb2-815d-83e9-f1d02c63cb67" class="" dir="auto">View &amp; layout</p><p id="35dd1851-4cb2-81f6-bf2e-fc7eef181fa7" class="" dir="auto">Bird’s-eye axonometric projection</p><p id="35dd1851-4cb2-81ce-b007-f75be264b3c8" class="" dir="auto">No perspective distortion, no realism</p><p id="35dd1851-4cb2-8174-a102-e2c9bda8a91f" class="" dir="auto">Entire district shown in one coherent view</p><p id="35dd1851-4cb2-819b-a183-c430a6776639" class="" dir="auto">Buildings</p><p id="35dd1851-4cb2-8186-88ed-c160766d0d42" class="" dir="auto">Simple white extruded massing blocks</p><p id="35dd1851-4cb2-8118-88e2-d7d7d8a6a3d2" class="" dir="auto">Thin magenta/pink outlines for proposed buildings</p><p id="35dd1851-4cb2-81c9-b357-e114f9c1b7c6" class="" dir="auto">Existing buildings shown in muted brown or grey</p><p id="35dd1851-4cb2-814a-9a3b-de20f4c6d026" class="" dir="auto">Sharp edges, minimal detail</p><p id="35dd1851-4cb2-811d-8936-ebf46d9df87d" class="" dir="auto">Public realm</p><p id="35dd1851-4cb2-81e6-abf7-db7952473ac5" class="" dir="auto">Plazas, terraces, and courtyards highlighted in warm yellow</p><p id="35dd1851-4cb2-8136-ab78-c3f4ba06499c" class="" dir="auto">Tree-lined streets and green corridors shown with simplified green tree symbols</p><p id="35dd1851-4cb2-8162-9c7b-c443de13bfa8" class="" dir="auto">Landscape is diagrammatic and abstract</p><p id="35dd1851-4cb2-81d2-88e9-c7f4a9a1488e" class="" dir="auto">Circulation</p><p id="35dd1851-4cb2-817e-8413-dddd7ec2314c" class="" dir="auto">Pedestrian paths shown with dashed arrows</p><p id="35dd1851-4cb2-8180-85b5-d878ca382c42" class="" dir="auto">Transit nodes indicated with simple icons (train / metro)</p><p id="35dd1851-4cb2-8124-8d97-eed1244450a2" class="" dir="auto">Major streets clearly labeled</p><p id="35dd1851-4cb2-81d0-81e9-d8abf7ad733b" class="" dir="auto">Text &amp; labels</p><p id="35dd1851-4cb2-81f7-a1af-efacb5dd7242" class="" dir="auto">Use bold axonometric text aligned to site geometry</p><p id="35dd1851-4cb2-8145-bfe0-e61050935129" class="" dir="auto">ALL CAPS for key areas (e.g. “URBAN DESIGN CAMPUS”)</p><p id="35dd1851-4cb2-819e-958e-c1378a504fe6" class="" dir="auto">Program labels directly on building volumes:</p><p id="35dd1851-4cb2-8134-abb2-c868e14c0519" class="" dir="auto">OFFICE, HOTEL, RETAIL, EDUCATIONAL, CULTURAL</p><p id="35dd1851-4cb2-8136-9707-ce01d0bc89d8" class="" dir="auto">Graphic style</p><p id="35dd1851-4cb2-81bc-a595-ebbfdb9c826f" class="" dir="auto">Flat vector illustration</p><p id="35dd1851-4cb2-81ce-bfb0-e00b77f2003f" class="" dir="auto">Muted architectural color palette</p><p id="35dd1851-4cb2-81c8-988a-ebf32573f3c5" class="" dir="auto">White background or very light beige base map</p><p id="35dd1851-4cb2-81b6-bc46-ea99c57ff1c6" class="" dir="auto">No shadows, no textures, no photorealism</p><p id="35dd1851-4cb2-812d-8409-ec1ce0a2d732" class="" dir="auto">Overall mood</p><p id="35dd1851-4cb2-8151-87e6-f119ebe5fec4" class="" dir="auto">Clear, professional, competition-ready urban design diagram</p><p id="35dd1851-4cb2-8186-acf9-db5e34635930" class="" dir="auto">Similar to planning diagrams used in architectural masterplans and city proposals</p><p id="35dd1851-4cb2-81d2-9c80-c6944ab70434" class="" dir="auto">Output:</p><figure id="35dd1851-4cb2-81eb-a990-f1c00a09a841" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/diagram-1_68572921209f0b9d14b36ead9bb266b7.jpg" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/diagram-1_68572921209f0b9d14b36ead9bb266b7.jpg"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/diagram-1_68572921209f0b9d14b36ead9bb266b7.jpg"/></a></figure><p id="35dd1851-4cb2-8162-bcf6-d09c6bf89bb0" class="" dir="auto">Input:</p><figure id="35dd1851-4cb2-817c-bf3f-dedc599f26e4" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/view-1_5a28efe94bbac7c186719ceca187400b.jpg" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/view-1_5a28efe94bbac7c186719ceca187400b.jpg"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/view-1_5a28efe94bbac7c186719ceca187400b.jpg"/></a></figure><p id="35dd1851-4cb2-81b5-93e8-cf50730bbf4e" class="" dir="auto">Create an urban design axonometric masterplan diagram based on the uploaded SketchUp model.</p><p id="35dd1851-4cb2-8154-b2e8-f859e36d4c54" class="" dir="auto">Preserve all original buildings, open spaces, streets, and site proportions exactly.</p><p id="35dd1851-4cb2-81d7-8ffc-c0ef5c0bf575" class="" dir="auto">Style requirements:</p><p id="35dd1851-4cb2-8134-b0fc-d4b114123075" class="" dir="auto">– Axonometric view, no perspective distortion</p><p id="35dd1851-4cb2-81b5-8f04-dfbb28d75ac7" class="" dir="auto">– Buildings as clean white masses with thin outlines</p><p id="35dd1851-4cb2-8129-be17-dbff725bede4" class="" dir="auto">– Background context faded to light grey with subtle dot texture</p><p id="35dd1851-4cb2-812f-822b-fd2c39dfc6da" class="" dir="auto">– Landscape areas in soft light green</p><p id="35dd1851-4cb2-8196-a9ab-eb579b2d4c26" class="" dir="auto">– Trees as simple oval canopies, flat color</p><p id="35dd1851-4cb2-81e4-a3d5-cd331636f18f" class="" dir="auto">– Main pedestrian circulation highlighted with bold red/orange translucent paths and arrows</p><p id="35dd1851-4cb2-815c-8120-c18aa521cce9" class="" dir="auto">– Program zones color-coded in warm yellow/orange/red</p><p id="35dd1851-4cb2-81e3-bce4-f65d0522dfcc" class="" dir="auto">– Clear program labels integrated into the axon (e.g. lobby, café, workshop, plaza, roof garden)</p><p id="35dd1851-4cb2-817d-8d15-f33438a1a0c2" class="" dir="auto">– Small human silhouettes to show movement and activity</p><p id="35dd1851-4cb2-8152-9b53-d9fdf538f905" class="" dir="auto">– No shadows, no photorealism, no material textures</p><p id="35dd1851-4cb2-8153-bccf-cbeeb54ef77c" class="" dir="auto">Overall look: diagrammatic, instructional, layered, and competition-style, clearly communicating program, circulation, and urban experience.</p><p id="35dd1851-4cb2-8174-bd21-d78da7abf599" class="" dir="auto">Output:</p><figure id="35dd1851-4cb2-8190-a919-c022b8029a7a" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/diagram-2_a1a300c3a1afbdafc1d7cd874a19fdac.jpg" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/diagram-2_a1a300c3a1afbdafc1d7cd874a19fdac.jpg"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/diagram-2_a1a300c3a1afbdafc1d7cd874a19fdac.jpg"/></a></figure><p id="35dd1851-4cb2-8196-bbe9-c84218e2c4df" class="" dir="auto">Input:</p><figure id="35dd1851-4cb2-81ce-b0fa-eac69adc20f3" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/view-1_7de6cc49c435a937ec6acfa67a10b7b2.jpg" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/view-1_7de6cc49c435a937ec6acfa67a10b7b2.jpg"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/view-1_7de6cc49c435a937ec6acfa67a10b7b2.jpg"/></a></figure><p id="35dd1851-4cb2-8141-ba88-ce75d227bae1" class="" dir="auto">Turn this SketchUp model into a high-quality photorealistic architectural rendering.</p><p id="35dd1851-4cb2-81b7-8d8d-eae2aec0bd1e" class="" dir="auto">Preserve the original camera angle, perspective, and building proportions exactly as modeled.</p><p id="35dd1851-4cb2-81be-a84c-dba6311f13c5" class="" dir="auto">Architecture &amp; Materials</p><p id="35dd1851-4cb2-813f-93ea-f0752c88d294" class="" dir="auto">Apply realistic, contemporary facade materials</p><p id="35dd1851-4cb2-81f6-ae47-cf5ace939100" class="" dir="auto">Emphasize glass curtain wall systems on tall buildings</p><p id="35dd1851-4cb2-81c6-ac45-e3bb86c6ab0e" class="" dir="auto">Use clean white and light grey architectural finishes for solid volumes</p><p id="35dd1851-4cb2-81a0-92c5-d7ade0b6f1b2" class="" dir="auto">Ensure accurate material scale, reflections, and surface roughness</p><p id="35dd1851-4cb2-8105-92cd-fc48aecb4b9c" class="" dir="auto">Lighting &amp; Atmosphere – Golden Hour</p><p id="35dd1851-4cb2-8112-b875-fb704bfa041a" class="" dir="auto">Late afternoon golden hour lighting with soft, warm global illumination</p><p id="35dd1851-4cb2-816c-8eca-e74a3b8ea889" class="" dir="auto">Low-angle sunlight creating long, soft, diffused shadows</p><p id="35dd1851-4cb2-81eb-afee-ff7d486ed96a" class="" dir="auto">No harsh blacks; shadows remain transparent and atmospheric</p><p id="35dd1851-4cb2-8106-a6a8-e4419a9a39c6" class="" dir="auto">Subtle aerial perspective haze toward the horizon to enhance depth and realism</p><p id="35dd1851-4cb2-8153-9bfa-e9a64c946e7a" class="" dir="auto">Color Palette – Biophilic Green City</p><p id="35dd1851-4cb2-812c-8c06-c70b642d1dbc" class="" dir="auto">Slightly saturated greenery to highlight sustainability and landscape design</p><p id="35dd1851-4cb2-81ba-8684-c77f78511cc5" class="" dir="auto">Bright whites and clear glass contrast strongly against deep greens</p><p id="35dd1851-4cb2-81db-bec4-f7e67fa6b46c" class="" dir="auto">Surrounding context is slightly desaturated and less detailed to guide focus toward the central masterplan</p><p id="35dd1851-4cb2-8182-b0ec-f98da2bb16a9" class="" dir="auto">Environment &amp; Detail – Matte Painting Integration</p><p id="35dd1851-4cb2-81bc-bbeb-fbe049bdd2ad" class="" dir="auto">Central buildings rendered as full 3D geometry</p><p id="35dd1851-4cb2-8152-96f4-d75755462f28" class="" dir="auto">Surrounding landscape enhanced with efficient vegetation assets (tree billboards or proxy trees) to create a lush, dense green environment</p><p id="35dd1851-4cb2-810f-8173-c80b6adbc096" class="" dir="auto">Water features with high reflectivity, softly mirroring sky and light to create calmness and openness</p><p id="35dd1851-4cb2-81ec-828c-e43cdfb33c17" class="" dir="auto">Overall Mood</p><p id="35dd1851-4cb2-8132-8b6b-dd5af216740d" class="" dir="auto">Clean, utopian, aspirational urban environment</p><p id="35dd1851-4cb2-8195-85ff-dd63731ec82a" class="" dir="auto">No traffic congestion, clutter, or construction elements</p><p id="35dd1851-4cb2-81e0-a818-fdc410f0f817" class="" dir="auto">A perfected vision where architecture, landscape, and nature coexist in harmony</p><p id="35dd1851-4cb2-8178-8342-eee494383601" class="" dir="auto">Professional competition-quality architectural visualization</p><p id="35dd1851-4cb2-816b-81ea-c0e81f98b426" class="" dir="auto">Output:</p><figure id="35dd1851-4cb2-81d8-958d-dd51b5650294" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/diagram-3_84fc9e462b64990cd34e3d5df482fb4f.jpg" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/diagram-3_84fc9e462b64990cd34e3d5df482fb4f.jpg"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/diagram-3_84fc9e462b64990cd34e3d5df482fb4f.jpg"/></a></figure><p id="35dd1851-4cb2-8107-9738-ef09712c2447" class="" dir="auto">Turn it to Night Scene:</p><figure id="35dd1851-4cb2-81f5-932d-efe6e52cba3d" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/diagram-4-1_aa7d15b3a00192ce150e1803d3f90be7.jpg" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/diagram-4-1_aa7d15b3a00192ce150e1803d3f90be7.jpg"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/diagram-4-1_aa7d15b3a00192ce150e1803d3f90be7.jpg"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

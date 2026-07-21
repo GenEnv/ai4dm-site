@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI4DM — GenAI for Design Media</title>
+<style>
+  :root{
+    --bg:#faf9f6; --fg:#1c1b18; --muted:#6b675e; --card:#ffffff;
+    --line:#e6e2d8; --accent:#2f5d50; --accent-fg:#ffffff; --wip:#a8873c;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#161513; --fg:#ece9e2; --muted:#9b968a; --card:#201f1c;
+           --line:#33312c; --accent:#7fb3a3; --accent-fg:#10201b; --wip:#d4b46a; }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--fg);
+       font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+       display:flex;min-height:100vh;justify-content:center;padding:48px 20px}
+  main{max-width:640px;width:100%}
+  h1{font-size:1.9rem;letter-spacing:-.01em;margin-bottom:.35rem}
+  .sub{color:var(--muted);margin-bottom:2.2rem}
+  .card{display:block;background:var(--card);border:1px solid var(--line);
+        border-radius:12px;padding:1.15rem 1.3rem;margin-bottom:1rem;
+        text-decoration:none;color:inherit;transition:border-color .15s, transform .15s}
+  a.card:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .card h2{font-size:1.08rem;margin-bottom:.2rem}
+  .card p{color:var(--muted);font-size:.92rem}
+  .tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.05em;
+       text-transform:uppercase;border-radius:99px;padding:.15rem .6rem;margin-bottom:.5rem}
+  .tag.v{background:var(--accent);color:var(--accent-fg)}
+  .tag.wip{border:1px solid var(--wip);color:var(--wip)}
+  .card.dim{opacity:.75}
+  footer{margin-top:2.5rem;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<main>
+  <h1>AI4DM</h1>
+  <p class="sub">Generative AI for Design Media — examples &amp; workflows for landscape representation.</p>
+
+  <a class="card" href="v1/GenAI%20Visual%20Examples_copy%2035dd18514cb280b98db4ee0c8e0c8efe.html">
+    <span class="tag v">Version 1</span>
+    <h2>GenAI Visual Examples</h2>
+    <p>First collection: task-by-task visual examples — plan → perspective, season change, model → rendering, and more.</p>
+  </a>
+
+  <a class="card" href="v2/AI%204%20DM%2036cd18514cb280118cd2c0438f7bc080.html">
+    <span class="tag v">Version 2</span>
+    <h2>AI 4 DM</h2>
+    <p>Second iteration: reorganized around workflows — iterative prompting, constraint locking, manual intervention, hybrid workflows.</p>
+  </a>
+
+  <div class="card dim">
+    <span class="tag wip">Work in progress</span>
+    <h2>AI4DM Platform (v3)</h2>
+    <p>An interactive learning platform — gallery, representation atlas, methods, and studio. Currently in development; link coming soon.</p>
+  </div>
+
+  <footer>ARCH 515 Design Media I · UBC SALA</footer>
+</main>
+</body>
+</html>

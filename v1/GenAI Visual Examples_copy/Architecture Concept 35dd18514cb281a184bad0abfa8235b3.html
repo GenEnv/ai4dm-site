@@ -1,0 +1,768 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Architecture Concept</title><meta name="data-notion-page-icon" content="/icons/arrow-right-basic_gray.svg"/><link rel="icon" href="https://app.notion.com/icons/arrow-right-basic_gray.svg"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="35dd1851-4cb2-81a1-84ba-d0abfa8235b3" class="page sans" data-notion-page-icon="/icons/arrow-right-basic_gray.svg"><header><div class="page-header-icon undefined"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/></div><h1 class="page-title" dir="auto">Architecture Concept</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><p id="35dd1851-4cb2-81e0-98c7-c3fc0e603423" class="" dir="auto">Input:</p><figure id="35dd1851-4cb2-81be-8f23-c70253bff485" class="image" data-notion-image="Architecture%20Concept/image.png" dir="ltr"><a href="Architecture%20Concept/image.png"><img style="width:709.9921875px" src="Architecture%20Concept/image.png"/></a></figure><p id="35dd1851-4cb2-81fc-b52b-f6d200a24015" class="" dir="auto">Render my SketchUp model into a professional architectural visualization. The building is a modern office located in suburban Los Angeles, positioned directly along the street frontage. Apply realistic materials to the facade, such as glass, metal panels, and concrete, with attention to reflections and shadows. Surround the building with subtle landscaping, including trees and planting strips, and show cars driving by on the adjacent street to capture a sense of urban activity. Use soft, natural daylight and a clean composition to create a polished, presentation-ready rendering that highlights the design within its suburban context.</p><p id="35dd1851-4cb2-8103-bd78-eb0e43085cb5" class="" dir="auto">
+</p><p id="35dd1851-4cb2-81ba-aefb-f8dcc6106655" class="" dir="auto">Output:</p><figure id="35dd1851-4cb2-812f-acfd-c0a3ccb6dd7d" class="image" data-notion-image="Architecture%20Concept/image%201.png" dir="ltr"><a href="Architecture%20Concept/image%201.png"><img style="width:709.9921875px" src="Architecture%20Concept/image%201.png"/></a></figure><p id="35dd1851-4cb2-81dd-9da2-d28fc8a53b67" class="" dir="auto"><strong>Input Prompt: </strong>Render the top down 45 degree birdseye view of this building with same details and context.</p><p id="35dd1851-4cb2-81b0-a606-fdf426e36dd8" class="" dir="auto"><strong>Output:</strong></p><figure id="35dd1851-4cb2-81b3-957e-d488d038be09" class="image" data-notion-image="Architecture%20Concept/image%202.png" dir="ltr"><a href="Architecture%20Concept/image%202.png"><img style="width:709.9921875px" src="Architecture%20Concept/image%202.png"/></a></figure><p id="35dd1851-4cb2-81f4-9e83-c4461aa4a577" class="" dir="auto">Input:</p><p id="35dd1851-4cb2-8175-92c3-f804ffb2e4dd" class="" dir="auto">Create an axonometric architectural program diagram using color-coded 3D blocks to represent spatial functions. Divide the building volume into stacked or interlocking bars, with each bar labeled by its program (e.g., &quot;Retail&quot;, &quot;Office&quot;, &quot;Hotel&quot;, &quot;Residential&quot;). Overlay bold transparent typography directly inside each volume. Use bright, high-contrast colors for each function type. Show a second diagram next to the first, highlighting programmatic voids such as &quot;Garden&quot;, &quot;Culture&quot;, and &quot;Passage&quot;, carved out of the same volume. Maintain clean linework, minimal black outlines, no shadows, and a white background. Style it in a conceptual, academic architecture diagram format, ideal for presentations or publications.</p><p id="35dd1851-4cb2-8194-baad-c961ba4685c0" class="" dir="auto">Output:</p><figure id="35dd1851-4cb2-818c-9ba7-ffa21d4785ed" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-2liaa62liaa62lia_876cbf3739a8f3e312ebaefe7b139bcd.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-2liaa62liaa62lia_876cbf3739a8f3e312ebaefe7b139bcd.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-2liaa62liaa62lia_876cbf3739a8f3e312ebaefe7b139bcd.png"/></a></figure><p id="35dd1851-4cb2-81b5-af9c-e40c8f2815bd" class="" dir="auto">Input:</p><p id="35dd1851-4cb2-810f-acd5-c03a8d62dedc" class="" dir="auto">Generate a vertical exploded axonometric diagram of a multi-story public building with detailed program layers. Use a transparent building envelope at the top to contain the volumes. Below, separate each programmatic volume (e.g., entrance hall, library, café, studio, forum, exhibition, kitchen, office, bar) as floating colored blocks stacked in order. Use fine lines to annotate each function with English labels. Apply semi-transparent color fills for each block and soft black outlines. Show elevator shafts and circulation cores clearly. Include subtle background grid and minimal site context at the base in light grey. Clean, professional architectural illustration style with academic clarity.</p><p id="35dd1851-4cb2-81c4-bdbb-c1a1e1f0bfb2" class="" dir="auto">Output:</p><figure id="35dd1851-4cb2-8178-957a-fcf0ffcecb24" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-py2fwdpy2fwdpy2f_cf01384f1324eca9a07766ab811360b5.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-py2fwdpy2fwdpy2f_cf01384f1324eca9a07766ab811360b5.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-py2fwdpy2fwdpy2f_cf01384f1324eca9a07766ab811360b5.png"/></a></figure><p id="35dd1851-4cb2-812f-8428-cafc5d592598" class="" dir="auto">Input:</p><p id="35dd1851-4cb2-81cc-8d27-d770a36e620f" class="" dir="auto">Create a 4-step architectural facade pattern diagram showing the transformation from a solid block to a refined elevation. Step 1 shows a black solid facade. Step 2 introduces a vertical and horizontal grid layout with a central service spine. Step 3 adds square or rectangular openings within the grid in a balanced composition. Step 4 renders the final facade with clear linework, including windows, frames, and base-level articulation. Use a minimal black-and-white style with thick arrows between each step for clarity. Maintain consistent scale and layout across all steps in a horizontal row on a white background.</p><p id="35dd1851-4cb2-81cb-ac3d-f0360ce15aa4" class="" dir="auto">Output:</p><figure id="35dd1851-4cb2-818f-a38f-d25fbcaf14db" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-9ivxki9ivxki9ivx_0bd6ba08612aa067f59f79b5f9abfb30.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-9ivxki9ivxki9ivx_0bd6ba08612aa067f59f79b5f9abfb30.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-9ivxki9ivxki9ivx_0bd6ba08612aa067f59f79b5f9abfb30.png"/></a></figure><p id="35dd1851-4cb2-816a-aff6-c48e7309499d" class="" dir="auto">Input:</p><p id="35dd1851-4cb2-81a2-a876-da6098443c5b" class="" dir="auto">Generate a clean architectural cross-section of the building. Cut through the building to show internal spaces, floor slabs, walls, windows, and structural elements. Represent the section in a clear architectural drawing style with accurate proportions. Use a white background with dark linework or soft shaded cut surfaces. Include basic human scale figures and furniture if visible, and align the section cut to reveal key program areas inside. The style should be suitable for architectural diagrams or presentation boards.</p><figure id="35dd1851-4cb2-8112-a437-d2e1a7e4df0b" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-aikthwaikthwaikt_031c4c8320fd33368156ed8b46fbeff8.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-aikthwaikthwaikt_031c4c8320fd33368156ed8b46fbeff8.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-aikthwaikthwaikt_031c4c8320fd33368156ed8b46fbeff8.png"/></a></figure><p id="35dd1851-4cb2-81e6-b57f-f9370473378b" class="" dir="auto">Input:</p><p id="35dd1851-4cb2-8109-bab0-c5bcabd52eec" class="" dir="auto">apply realistic textures to the cross-section</p><figure id="35dd1851-4cb2-819d-a996-c25a3d519bbf" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-bind4kbind4kbind_c31e2bb20e05d624adf3531418e384f5.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-bind4kbind4kbind_c31e2bb20e05d624adf3531418e384f5.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-bind4kbind4kbind_c31e2bb20e05d624adf3531418e384f5.png"/></a></figure><p id="35dd1851-4cb2-81ce-b88e-e404f3dbac22" class="" dir="auto">Input:</p><p id="35dd1851-4cb2-81e5-a1a9-e284a34827d9" class="" dir="auto">Create a clean, detailed isometric architectural diagram for my building in an urban context. The diagram should focus on the central building with simplified surrounding context. Use a white background and thin linework with soft shadows. The building should include readable facade elements, terraces, and structural outlines. Surround the site with simplified trees, roads, cars, and adjacent buildings to show city integration. Maintain a calm monochrome style (blue or grey tones), similar to architectural competition boards. Make sure the context includes urban density, street grid, sidewalks, and light site landscaping. Keep annotation minimal or omit for visual clarity.</p><figure id="35dd1851-4cb2-8103-a87f-eacb2f04f833" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-4zgyuq4zgyuq4zgy_0313f92b870fcdc3837bb7b0a5637be4.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-4zgyuq4zgyuq4zgy_0313f92b870fcdc3837bb7b0a5637be4.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-4zgyuq4zgyuq4zgy_0313f92b870fcdc3837bb7b0a5637be4.png"/></a></figure><p id="35dd1851-4cb2-8192-a9d4-eab7d283095e" class="" dir="auto">Input:</p><p id="35dd1851-4cb2-81d6-af47-e6a91e000825" class="" dir="auto">Based on the understanding of this building, create a lobby interior rendering for this building. Realistic rendering style, with natural light and realistic textures.</p><p id="35dd1851-4cb2-8180-b068-f8ed01c997b8" class="" dir="auto">Output:</p><figure id="35dd1851-4cb2-81b7-a907-fd6cdd407c91" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-wbioxdwbioxdwbio_871651aaab809869c4caade7e2527a1c.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-wbioxdwbioxdwbio_871651aaab809869c4caade7e2527a1c.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-wbioxdwbioxdwbio_871651aaab809869c4caade7e2527a1c.png"/></a></figure><p id="35dd1851-4cb2-81d6-b389-fa5fee265770" class="" dir="auto">Input:</p><p id="35dd1851-4cb2-81a8-bbda-f619214d7bff" class="" dir="auto">Create a vertical architectural presentation board for this building project. Include a project title and concise design descriptions. Use all previously generated content: building renderings (both front and bird’s-eye views), all diagrams (massing, circulation, exploded axon, program analysis, etc.), sections, floor plans, and interior renderings. Arrange images without repetition. Place the main building renderings at the top, interior renderings at the bottom, and all analytical diagrams centrally positioned. Maintain a clean, professional layout with a vertical A1 format. Ensure visual hierarchy, white background, and clear annotations throughout.</p><p id="35dd1851-4cb2-81ef-9fe5-e238afb048ff" class="" dir="auto">Output:</p><figure id="35dd1851-4cb2-8135-b551-d62e8574819e" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-pvtzyqpvtzyqpvtz_64d184e6be245775fce4d2a10c26de89.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-pvtzyqpvtzyqpvtz_64d184e6be245775fce4d2a10c26de89.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-pvtzyqpvtzyqpvtz_64d184e6be245775fce4d2a10c26de89.png"/></a></figure><p id="35dd1851-4cb2-8139-8541-c6bf3111acad" class="" dir="auto">night view rendering of this building</p><figure id="35dd1851-4cb2-81e2-967a-cea05ca044ba" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-wkye2xwkye2xwkye_d27eac76d4ccc37554f58412a43faae7.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-wkye2xwkye2xwkye_d27eac76d4ccc37554f58412a43faae7.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-wkye2xwkye2xwkye_d27eac76d4ccc37554f58412a43faae7.png"/></a></figure><p id="35dd1851-4cb2-81e3-a9e7-c9a0d034d310" class="" dir="auto">color each floors by functions with annotaion like the 2nd reference image</p><figure id="35dd1851-4cb2-81a7-97f7-f0d6b2a5b2b0" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-k0ri9gk0ri9gk0ri_cc8d282bf47baec77267a50fb0d86fa9.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-k0ri9gk0ri9gk0ri_cc8d282bf47baec77267a50fb0d86fa9.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-k0ri9gk0ri9gk0ri_cc8d282bf47baec77267a50fb0d86fa9.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

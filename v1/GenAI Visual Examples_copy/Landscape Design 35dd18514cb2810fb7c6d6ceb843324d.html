@@ -1,0 +1,767 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Landscape Design</title><meta name="data-notion-page-icon" content="/icons/arrow-right-basic_gray.svg"/><link rel="icon" href="https://app.notion.com/icons/arrow-right-basic_gray.svg"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="35dd1851-4cb2-810f-b7c6-d6ceb843324d" class="page sans" data-notion-page-icon="/icons/arrow-right-basic_gray.svg"><header><div class="page-header-icon undefined"><img class="icon notion-static-icon" src="https://app.notion.com/icons/arrow-right-basic_gray.svg"/></div><h1 class="page-title" dir="auto">Landscape Design</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><p id="35dd1851-4cb2-81ac-bd19-e06740d7df7f" class="" dir="auto">Input:</p><figure id="35dd1851-4cb2-81a5-9c6f-c21e90c821f0" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/landscape-plan-sketch_dc6ea175ab88405e236d2822a69aff97.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/landscape-plan-sketch_dc6ea175ab88405e236d2822a69aff97.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/landscape-plan-sketch_dc6ea175ab88405e236d2822a69aff97.png"/></a></figure><p id="35dd1851-4cb2-8113-b962-e4b89075d555" class="" dir="auto">Refine my hand-sketched landscape plan by making the linework clean, sharp, and legible, while preserving the original architectural sketch style.</p><p id="35dd1851-4cb2-816b-a266-f480496baeb1" class="" dir="auto">Keep all existing elements, proportions, and composition unchanged.</p><p id="35dd1851-4cb2-81d1-b7f5-e47b3bc023a2" class="" dir="auto">Maintain the hand-drawn, architectural design sketch aesthetic—no photorealism.</p><p id="35dd1851-4cb2-8110-8d1e-e489791ce043" class="" dir="auto">Use consistent line weights, improved clarity, and subtle tonal variation.</p><p id="35dd1851-4cb2-8172-bbeb-f5795fcc1f12" class="" dir="auto">Ratio 16:11.</p><p id="35dd1851-4cb2-81cd-87e7-dc8034646e04" class="" dir="auto">Output:</p><figure id="35dd1851-4cb2-8123-afc5-f471cd001b37" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-yji8qqyji8qqyji8_46b6286bc30eeead1c2b494ea05eb08b.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-yji8qqyji8qqyji8_46b6286bc30eeead1c2b494ea05eb08b.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-yji8qqyji8qqyji8_46b6286bc30eeead1c2b494ea05eb08b.png"/></a></figure><p id="35dd1851-4cb2-81e8-8afc-eae206cb45ff" class="" dir="auto">Prompt:</p><p id="35dd1851-4cb2-818d-bfde-f7be17f665d2" class="" dir="auto">Turn my hand-drawn landscape plan sketch into a clean, refined landscape architecture master plan in the style of the reference image. Preserve all details, geometry, scale, tree positions, paths, and layout exactly as in my sketch—do not change the design.Render it with soft watercolor textures, light grey and green tone shading, thin vector-style outlines, and gentle shadows. Trees should appear as semi-transparent circular canopies with subtle gradients and white center points. Pathways and plazas should use light stippled textures and muted pastel color fields.Add clear architectural annotations, simple labels, contour hints, and dashed reference lines in a subtle technical-drawing style. Maintain the elegant European competition-board aesthetic—minimal, airy, precise, professional.</p><figure id="35dd1851-4cb2-8122-8e43-c7efe4f86c53" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-gvxyz6gvxyz6gvxy_6d3c0ca00901a17c55e4a239631520fb.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-gvxyz6gvxyz6gvxy_6d3c0ca00901a17c55e4a239631520fb.png"><img style="width:700px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-gvxyz6gvxyz6gvxy_6d3c0ca00901a17c55e4a239631520fb.png"/></a></figure><p id="35dd1851-4cb2-8124-86c9-e7db0fb36516" class="" dir="auto">Prompt:</p><p id="35dd1851-4cb2-81d8-8bba-ccdec1bffc5d" class="" dir="auto">Seasonal shrubs, remove annotation and text</p><figure id="35dd1851-4cb2-81c9-8083-eb77114ebf27" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-we28knwe28knwe28-copy_d812fa343fa58e3a4f4f49461e2adc06.jpg" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-we28knwe28knwe28-copy_d812fa343fa58e3a4f4f49461e2adc06.jpg"><img style="width:600px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-we28knwe28knwe28-copy_d812fa343fa58e3a4f4f49461e2adc06.jpg"/></a></figure><p id="35dd1851-4cb2-8140-9fb1-de4f509477c4" class="" dir="auto">Prompt:</p><p id="35dd1851-4cb2-8159-99a5-cc3d1d5f633f" class="" dir="auto">Flat top-down landscape plan rendering, preserve original sketch, layout, trees and shrubs exactly. Mutual pastel color palette, clean architectural linework, no shadows or depth. Simple circular tree canopies, flat shrub masses with subtle seasonal accents. Light wood plank texture for patio, soft stone/concrete paving textures. Minimal, airy, diagrammatic landscape architecture style, white background.</p><figure id="35dd1851-4cb2-8194-b9a7-da5895275961" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-iyhwatiyhwatiyhw-copy_6ad510589e3c893e18218616de870228.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-iyhwatiyhwatiyhw-copy_6ad510589e3c893e18218616de870228.png"><img style="width:600px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-iyhwatiyhwatiyhw-copy_6ad510589e3c893e18218616de870228.png"/></a></figure><p id="35dd1851-4cb2-8194-917c-d0e2a67e7325" class="" dir="auto">Prompt:</p><p id="35dd1851-4cb2-81c1-a4be-d1528bd3478c" class="" dir="auto">good, make it clean black white drawing, clear thin and thick black lines, technical line for CAD.</p><figure id="35dd1851-4cb2-816c-bf9c-dea0426b81ef" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-fqf2llfqf2llfqf2-copy_e5df1bb74fc0847447a173ab399d8324.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-fqf2llfqf2llfqf2-copy_e5df1bb74fc0847447a173ab399d8324.png"><img style="width:600px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-fqf2llfqf2llfqf2-copy_e5df1bb74fc0847447a173ab399d8324.png"/></a></figure><p id="35dd1851-4cb2-8157-a7a7-d9f2a1a6928d" class="" dir="auto">Prompt:</p><p id="35dd1851-4cb2-819a-a49e-c481084723bc" class="" dir="auto">Convert my landscape plan into a 60 degree 3D isometric architectural model, keeping the exact layout, proportions, geometry, and spatial arrangement from the plan.Generate a clean, detailed 60 degree isometric 3D view showing all elements—2 story house, trees, planting areas, pathways, plazas, seating, terrain forms, water features, and all site components—precisely extruded from the original plan.Use realistic textures:buildings with accurate façade materialssoft soil + grass texturesnatural stone pavingconcrete plaza surfaceswooden deck texturesrealistic tree canopies with volumetric foliagesubtle ambient occlusion + soft shadowsStyle: professional landscape architecture rendering, isometric view, crisp details, realistic materials.</p><figure id="35dd1851-4cb2-817d-a822-e6b99769f1dd" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-wm29z7wm29z7wm29-copy_2c2f2abbe221203457be168ef6f3bc69.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-wm29z7wm29z7wm29-copy_2c2f2abbe221203457be168ef6f3bc69.png"><img style="width:600px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-wm29z7wm29z7wm29-copy_2c2f2abbe221203457be168ef6f3bc69.png"/></a></figure><p id="35dd1851-4cb2-8183-b5f2-c0a0fa16d059" class="" dir="auto">Prompt:</p><p id="35dd1851-4cb2-813b-b61c-c57334b05cc0" class="" dir="auto">Convert my existing isometric diagram into a clean, diagrammatic architectural illustration in a flat pastel urban-design style. Preserve all original buildings, landscape layout, paths, and proportions exactly as they are. Do not change the geometry or spatial relationships.</p><p id="35dd1851-4cb2-81eb-8d29-e025de07f8f8" class="" dir="auto">Render buildings in white or very light grey with minimal detail. Use soft pastel colors to highlight ground surfaces and landscape zones. Apply thin black linework, no textures, and no photorealistic shading.</p><p id="35dd1851-4cb2-8102-a893-c7118732e892" class="" dir="auto">Clearly label backyard landscape functions using icons, callout circles, and dashed arrows, including: BBQ area, kids play zone, garden zone, swimming zone, seating/lounge area, and circulation paths. Add simple human silhouettes, trees, and furniture for scale.</p><p id="35dd1851-4cb2-811d-936d-f77f2067541f" class="" dir="auto">Keep the background clean and light, with a clear isometric perspective. The final image should read as a friendly, explanatory landscape strategy diagram that communicates program and use while keeping all original design elements unchanged.</p><figure id="35dd1851-4cb2-8157-8796-e3f4086f827c" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-duof7bduof7bduof-copy_fb5c350ffda92298701b5df100673289.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-duof7bduof7bduof-copy_fb5c350ffda92298701b5df100673289.png"><img style="width:600px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-duof7bduof7bduof-copy_fb5c350ffda92298701b5df100673289.png"/></a></figure><p id="35dd1851-4cb2-8161-9bc7-d553e55c986f" class="" dir="auto">Prompt:</p><p id="35dd1851-4cb2-81b1-8030-ca522b2e2f03" class="" dir="auto">Draw a landscape architecture section in a competition-style hybrid photomontage + diagrammatic aesthetic. Show a left-to-right sectional cut through the site with realistic trees and planting rendered in soft atmospheric textures and light haze. Clearly organize vegetation into canopy, understory, and groundcover layers, labeled vertically along the section.</p><p id="35dd1851-4cb2-81e1-b662-f446837b56a0" class="" dir="auto">Use thin guide lines rising from each plant to circular species callouts above the section, showing plant imagery and names. Include subtle human silhouettes for scale and activity. Keep the ground profile clean and minimal, with light earth tones and clear ecological zones. Use a white background, restrained natural colors, soft shadows, and minimal modern typography. The drawing should communicate ecological systems, planting structure, and spatial experience with clarity and elegance.</p><figure id="35dd1851-4cb2-81e9-b65b-e9e0e22b8128" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-v5m3zdv5m3zdv5m3_c5d7412cb99770297fdbd1c7108149f9.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-v5m3zdv5m3zdv5m3_c5d7412cb99770297fdbd1c7108149f9.png"><img style="width:600px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-v5m3zdv5m3zdv5m3_c5d7412cb99770297fdbd1c7108149f9.png"/></a></figure><p id="35dd1851-4cb2-8159-8305-fde0ae8139eb" class="" dir="auto">construction diagram to explain stormwater management for this backyard</p><figure id="35dd1851-4cb2-8155-8f4f-d55c4315ed19" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-d4tvv7d4tvv7d4tv-copy_5a8efc1b23dd43a6726c03f0458b0487.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-d4tvv7d4tvv7d4tv-copy_5a8efc1b23dd43a6726c03f0458b0487.png"><img style="width:600px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-d4tvv7d4tvv7d4tv-copy_5a8efc1b23dd43a6726c03f0458b0487.png"/></a></figure><p id="35dd1851-4cb2-81a3-878b-f2457df799fe" class="" dir="auto">Prompt:</p><p id="35dd1851-4cb2-816c-af64-c53d91d3789f" class="" dir="auto">Render a perspective view from the back door of the house, pavilion, looking outward toward the pool and garden.</p><p id="35dd1851-4cb2-81c0-9077-f8841f514a97" class="" dir="auto">Show the scene from a realistic human eye-level, capturing the transition from the patio/threshold area into the outdoor living space.</p><p id="35dd1851-4cb2-81c4-a9f1-e23b465a3f1b" class="" dir="auto">Include:</p><p id="35dd1851-4cb2-81c7-9ed1-fd82a944ad8f" class="" dir="auto">the pool in the mid-ground with realistic water reflections</p><p id="35dd1851-4cb2-8166-ab3d-d92d371f3375" class="" dir="auto">surrounding garden planting, shrubs, ornamental grasses, and trees</p><p id="35dd1851-4cb2-8165-a503-c7327c23c430" class="" dir="auto">paving materials, outdoor furniture, and landscape textures</p><p id="35dd1851-4cb2-8164-bc61-dede4be72978" class="" dir="auto">soft natural daylight, gentle shadows, and a warm, welcoming atmosphere</p><p id="35dd1851-4cb2-814d-9b99-e31a87711c91" class="" dir="auto">realistic materials for the house façade and back door frame (to show context)</p><p id="35dd1851-4cb2-8156-b9db-cb028e6dd490" class="" dir="auto">Style: clean architectural rendering, high detail, natural colors, calm and modern landscape design.</p><figure id="35dd1851-4cb2-8102-8a98-ef5b930b9555" class="image" data-notion-image="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-gg1w3tgg1w3tgg1w-copy_37cf9a2da9d215ecec95fdaef4f8c99c.png" dir="ltr"><a href="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-gg1w3tgg1w3tgg1w-copy_37cf9a2da9d215ecec95fdaef4f8c99c.png"><img style="width:600px" src="https://shopify-r2.ldtsoft.work/live/course/file/f92c95-59.myshopify.com/gemini-generated-image-gg1w3tgg1w3tgg1w-copy_37cf9a2da9d215ecec95fdaef4f8c99c.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
