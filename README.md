@@ -11,6 +11,7 @@ Student-facing example collections for **ARCH 515 Design Media I** (UBC SALA): u
 | **Platform (v3)** | [genenv.github.io/ai4dm-site/v3/](https://genenv.github.io/ai4dm-site/v3/) | **The interactive learning platform** — representation atlas · example gallery · prompt lab · workflows · studio (bring your own API key). **Work in progress:** some features are unfinished; content and interface will keep evolving. |
 | Version 1 | [genenv.github.io/ai4dm-site/v1/](https://genenv.github.io/ai4dm-site/v1/) | GenAI Visual Examples — task-by-task visual examples (plan → perspective, season change, model → rendering, …) |
 | Version 2 | [genenv.github.io/ai4dm-site/v2/](https://genenv.github.io/ai4dm-site/v2/) | AI 4 DM — reorganized around workflows (iterative prompting, constraint locking, manual intervention, hybrid workflows) |
+| Miro board | [Teaching AI4DM Visual](https://miro.com/app/board/uXjVHQnu3S0=/?share_link_id=533349067522) | The same material as a spatial canvas — a different interface for browsing examples and workflows |
 
 ## Notes
 
